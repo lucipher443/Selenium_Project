@@ -18,18 +18,21 @@ public class Recursivitate {
     public void parcurgereListe()
     {
         driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
+
+        driver.get("https://demoqa.com/sortable");
+
         driver.manage().window().maximize();
+
         Actions actions = new Actions(driver);
 
         List<WebElement> list = driver.findElements(By.xpath("//div[@id = 'demo-tabpane-list']//div[@class = 'list-group-item list-group-item-action']"));
         for(int i = 0; i < list.size()-1; i++)
         {
             WebElement webElement = list.get(i);
-            WebElement webElement2 = list.get(i++);
+            WebElement nextElement = list.get(i++);
             System.out.println("Numarul elementului este " + webElement.getText());
             actions.clickAndHold(webElement)
-                    .moveToElement(webElement2)
+                    .moveToElement(nextElement)
                     .release()
                     .build()
                     .perform();
@@ -40,5 +43,4 @@ public class Recursivitate {
             e.printStackTrace();
         }
     }
-
 }

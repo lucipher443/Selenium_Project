@@ -82,8 +82,7 @@ public class FormTest {
         CityElement.sendKeys(Keys.ENTER);
 
         WebElement SubmitElement = driver.findElement(By.id("submit"));
-        SubmitElement.click();
-
+        js.executeScript("arguments[0].click();", SubmitElement);
 
     }
 }
